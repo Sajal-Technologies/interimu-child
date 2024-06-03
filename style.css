@@ -55,27 +55,25 @@
     color: #77838F !important;
 }
 
-.error-message {
-    display: flex;
-    align-items: center;
-    background-color: #ffecec;
-    color: #d9534f;
-    padding: 15px;
+.error-message.full-width {
+    width: 100%;
+    background-color: #f8d7da; /* Adjust the color as needed */
+    color: #721c24; /* Adjust the color as needed */
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #f5c6cb; /* Adjust the color as needed */
     border-radius: 5px;
-    border: 1px solid #d9534f;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-}
-.error-message .icon {
+    margin-bottom: 20px; /* Adjust the spacing as needed */
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 15px;
+    align-items: center;
+    font-size: 14px; /* Adjust the font size */
+}
+
+.error-message .icon {
     margin-right: 10px;
-    background-color: #d9534f;
-    border-radius: 50%;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
- }
+}
+
+.content-below-banner {
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
