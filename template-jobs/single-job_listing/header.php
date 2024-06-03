@@ -17,11 +17,25 @@ $author_id = superio_get_post_author($post->ID);
 <div class="job-detail-header v1" <?php echo trim($style); ?>>
     <div class="container">
         <div class="row flex-middle-sm">
+            <div class="col-xs-12">
+                <?php $isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':''; if( $isfilled == 'yes') { ?>
+                <div class="error-message full-width">
+                    <div class="icon">x</div>
+                    <div>
+                        <?php echo esc_html_e('Deze opdracht is gesloten, reageren is helaas niet meer mogelijk', 'superio') ?>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="row flex-middle-sm content-below-banner">
             <div class="col-md-8 col-sm-7 col-xs-12">
                 <div class="flex-middle-sm">
+
                     <?php
                         superio_job_display_employer_logo($post, true, true);
                     ?>
+
                     <div class="info-detail-job">
                         <div class="title-wrapper flex-middle-sm">
                             <?php the_title( '<h1 class="job-detail-title">', '</h1>' ); ?>
@@ -41,17 +55,10 @@ $author_id = superio_get_post_author($post->ID);
                             <?php superio_job_display_detachering_icon($post); ?>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="job-detail-buttons col-md-4 col-sm-5 col-xs-12">
-            	<?php $isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':''; if( $isfilled == 'yes') { ?>
-                <div class="error-message">
-                    <div class="icon">x</div>
-                    <div>
-                        <?php echo esc_html_e('Deze opdracht is gesloten, reageren is helaas niet meer mogelijik', 'superio') ?>
-                    </div>
-                </div>
-                <?php } ?>
                 <div class="action">
                     <?php echo get_post_meta($post->ID, '_job_filled', true)? '': WP_Job_Board_Pro_Job_Listing::display_apply_job_btn($post->ID); ?>
                     <?php WP_Job_Board_Pro_Job_Listing::display_shortlist_btn($post->ID); ?>
