@@ -1,0 +1,81 @@
+/*
+ Theme Name:   Superio Child
+ Theme URI:    https://themeforest.net/item/superio-job-board-wordpress-theme/32180231
+ Description:  Superio Child Theme
+ Author:       ApusTheme
+ Author URI:   http://apusthemes.com
+ Template:     superio
+ Version:      1.0.0
+ Text Domain:  superio-child
+*/
+ .employer-thumbnail {
+    border-radius: unset !important;
+    -webkit-border-radius: unset !important;
+}
+.job-detail-buttons  .btn-view-details {
+    vertical-align: top;
+    margin-right: 20px;
+    background: var(--superio-theme-color);
+    border-color: var(--superio-theme-color);
+    color: #fff;
+    position: relative;
+    float:right;
+}
+
+.btn-view-details:focus, .btn-view-details:hover {
+    border-color: var(--superio-theme-hover-color);
+    background: var(--superio-theme-hover-color);
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .job-detail-custom .job-detail-buttons {
+        margin-top: 15px;
+    }
+    .job-detail-buttons  .btn-view-details {
+        float:unset;
+    }
+}
+
+.freelance {
+    color:white !important;
+    background: green !important;
+}
+
+.detachering {
+    color: white !important;
+    background: blue !important;
+}
+
+#main-application-form .mfp-hide {
+    display: block !important;
+}
+
+#job-application-terms p, #job-application-terms li {
+    color: #77838F !important;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    background-color: #ffecec;
+    color: #d9534f;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #d9534f;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+.error-message .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    background-color: #d9534f;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+ }
