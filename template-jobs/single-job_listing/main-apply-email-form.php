@@ -29,9 +29,10 @@ if ( is_user_logged_in() ) {
 
 $cv_required = wp_job_board_pro_get_option('candidate_apply_job_cv_required', 'on');
 
+$isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':'';
 ?>
 
-<?php if ( ! empty( $author_email ) ) : ?>
+<?php if ( ! empty( $author_email ) && $isfilled != 'yes' ) : ?>
 	<div id="job-apply-email-form-wrapper-<?php echo esc_attr($post->ID); ?>" class="job-apply-email-form-wrapper mfp-hide">
 	<div class="inner">
 		<h2 class="widget-title">
