@@ -13,12 +13,14 @@ $author_id = superio_get_post_author($post->ID);
     }else{
         $style = '';
     }
+    $application_deadline_date = get_post_meta( $post->ID, 'application_deadline_date', true );
+    $deadline = !empty($application_deadline_date) && date('Y-m-d', strtotime('now')) > date('Y-m-d', strtotime($application_deadline_date));
 ?>
 <div class="job-detail-header v1" <?php echo trim($style); ?>>
     <div class="container">
         <div class="row flex-middle-sm">
             <div class="col-xs-12">
-                <?php $isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':''; if( $isfilled == 'yes') { ?>
+                <?php $isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':''; if( $isfilled == 'yes' || $deadline) { ?>
                 <div class="error-message full-width">
                     <div class="icon">x</div>
                     <div>
@@ -60,7 +62,7 @@ $author_id = superio_get_post_author($post->ID);
             </div>
             <div class="job-detail-buttons col-md-4 col-sm-5 col-xs-12">
                 <div class="action">
-                    <?php echo get_post_meta($post->ID, '_job_filled', true)? '': WP_Job_Board_Pro_Job_Listing::display_apply_job_btn($post->ID); ?>
+                    <?php echo (get_post_meta($post->ID, '_job_filled', true) || $deadline)? '': WP_Job_Board_Pro_Job_Listing::display_apply_job_btn($post->ID); ?>
                     <?php WP_Job_Board_Pro_Job_Listing::display_shortlist_btn($post->ID); ?>
                 </div>
             </div>
