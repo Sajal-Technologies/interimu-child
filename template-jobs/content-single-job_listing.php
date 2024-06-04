@@ -29,14 +29,6 @@ global $post;
                 <!-- job application form -->
 				<div id="main-application-form"><?php echo WP_Job_Board_Pro_Template_Loader::get_template_part( 'single-job_listing/main-apply-email-form' ); ?></div>
                 
-
-				<!-- job social -->
-				<?php if ( superio_get_config('show_job_social_share', false) ) { ?>
-					<div class="sharebox-job">
-	        			<?php get_template_part( 'template-parts/sharebox-job' );  ?>
-	        		</div>
-	            <?php } ?>
-
 				<?php echo WP_Job_Board_Pro_Template_Loader::get_template_part( 'single-job_listing/photos' ); ?>
 
 				<?php echo WP_Job_Board_Pro_Template_Loader::get_template_part( 'single-job_listing/video' ); ?>

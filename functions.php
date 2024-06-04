@@ -8,7 +8,6 @@ add_action( 'wp_enqueue_scripts', 'superio_child_enqueue_styles', 200 );
 
 
 function custom_translations($translated_text, $text, $domain) {
-
 	$translations = array(
 		'Job Alert' => array(
 			'english' => 'Job Alert',
@@ -400,6 +399,16 @@ function custom_translations($translated_text, $text, $domain) {
 			'dutch' => 'Opdracht begint',
 			'domain' => ['wp-job-board-pro', 'superio']
 		),
+		'Open Job' => array(
+			'english' => 'Open Job',
+			'dutch' => 'Open Opdracht',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
+		'Open Jobs' => array(
+			'english' => 'Open Job',
+			'dutch' => 'Open Opdrachten',
+			'domain' => ['wp-job-board-pro', 'superio']
+		)
 	);
 
     if (isset($translations[$text]) && in_array($domain, $translations[$text]['domain'] ) ) {
@@ -599,4 +608,39 @@ function superio_child_job_display_short_location($post, $display_type = 'no-ico
     } else {
     	return $output;
     }
+}
+
+function superio_child_employer_display_open_position($post, $show_url = false) {
+	$user_id = WP_Job_Board_Pro_User::get_user_by_employer_id($post->ID);
+	$args = array(
+	        'post_type' => 'job_listing',
+	        'post_per_page' => 1,
+	        'post_status' => 'publish',
+	        'fields' => 'ids',
+	        'author' => $user_id
+	    );
+	$jobs = WP_Job_Board_Pro_Query::get_posts($args);
+	$count_jobs = $jobs->found_posts;
+	
+	?>
+	<span class="wrapper-open-job">
+		<?php if ($show_url) { ?>
+			<a href="<?php echo esc_url(get_permalink($post)); ?>" class="open-job">
+		<?php } ?>
+        <?php 
+		$open_job_text = __('Open Job', 'superio');
+		$open_jobs_text = __('Open Jobs', 'superio');
+		$job_count = intval($count_jobs);
+
+		if ($job_count <= 1 ){
+			echo sprintf($open_job_text . ' - <span>%s</span>', $job_count);
+		}else{
+			echo sprintf($open_jobs_text . ' - <span>%s</span>', $job_count);
+		}
+		?>
+        <?php if ($show_url) { ?>
+			</a> 
+		<?php } ?> 
+    </span>
+    <?php
 }
