@@ -30,9 +30,15 @@ if ( is_user_logged_in() ) {
 $cv_required = wp_job_board_pro_get_option('candidate_apply_job_cv_required', 'on');
 
 $isfilled = get_post_meta($post->ID, '_job_filled', true)? 'yes':'';
+
+$application_deadline_date = get_post_meta( $post->ID, '_job_application_deadline_date', true );
+if (empty($application_deadline_date)) {
+	$application_deadline_date = get_post_meta( $post->ID, '_job_expiry_date', true );
+}
+$deadline = !empty($application_deadline_date) && date('Y-m-d', strtotime('now')) > date('Y-m-d', strtotime($application_deadline_date));
 ?>
 
-<?php if ( ! empty( $author_email ) && $isfilled != 'yes' ) : ?>
+<?php if ( ! empty( $author_email ) && ($isfilled != 'yes' || !$deadline )) : ?>
 	<div id="job-apply-email-form-wrapper-<?php echo esc_attr($post->ID); ?>" class="job-apply-email-form-wrapper mfp-hide">
 	<div class="inner">
 		<h2 class="widget-title">
