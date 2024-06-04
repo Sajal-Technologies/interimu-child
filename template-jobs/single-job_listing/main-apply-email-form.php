@@ -38,7 +38,7 @@ if (empty($application_deadline_date)) {
 $deadline = !empty($application_deadline_date) && date('Y-m-d', strtotime('now')) > date('Y-m-d', strtotime($application_deadline_date));
 ?>
 
-<?php if ( ! empty( $author_email ) && ($isfilled != 'yes' || !$deadline )) : ?>
+<?php if ( ! empty( $author_email ) && ($isfilled != 'yes' && !$deadline )) : ?>
 	<div id="job-apply-email-form-wrapper-<?php echo esc_attr($post->ID); ?>" class="job-apply-email-form-wrapper mfp-hide">
 	<div class="inner">
 		<h2 class="widget-title">
