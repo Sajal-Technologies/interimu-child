@@ -13,7 +13,12 @@ $author_id = superio_get_post_author($post->ID);
     }else{
         $style = '';
     }
-    $application_deadline_date = get_post_meta( $post->ID, 'application_deadline_date', true );
+    
+    $application_deadline_date = get_post_meta( $post->ID, '_job_application_deadline_date', true );
+    if (empty($application_deadline_date)) {
+        $application_deadline_date = get_post_meta( $post->ID, '_job_expiry_date', true );
+    }
+
     $deadline = !empty($application_deadline_date) && date('Y-m-d', strtotime('now')) > date('Y-m-d', strtotime($application_deadline_date));
 ?>
 <div class="job-detail-header v1" <?php echo trim($style); ?>>
