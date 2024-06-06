@@ -644,3 +644,35 @@ function superio_child_employer_display_open_position($post, $show_url = false) 
     </span>
     <?php
 }
+
+add_action('pre_get_posts', 'modify_jobs_main_query');
+function modify_jobs_main_query($query) {
+    if (!is_admin()) {
+        // Modify query parameters here
+		if ( isset( $query->query_vars['post_type'] ) && $query->query_vars['post_type'] == 'job_listing' ) {
+
+			// Get existing meta_query if it exists, otherwise create a new array
+            $meta_query = $query->get('meta_query');
+            if ( ! is_array( $meta_query ) ) {
+                $meta_query = array();
+            }
+
+            // Add meta query for 'filled'
+            $meta_query[] = array(
+                'key'     => WP_JOB_BOARD_PRO_JOB_LISTING_PREFIX . 'filled',
+                'compare' => 'NOT EXISTS',
+            );
+
+            // Add meta query for 'expiry_date'
+            $meta_query[] = array(
+                'key'     => WP_JOB_BOARD_PRO_JOB_LISTING_PREFIX . 'expiry_date',
+                'value'   => date('Y-m-d'),
+                'compare' => '>=',
+                'type'    => 'DATE'
+            );
+
+            // Set the meta query to the main query
+            $query->set( 'meta_query', $meta_query );
+		}
+    }
+}
