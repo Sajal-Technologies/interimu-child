@@ -665,7 +665,7 @@ function modify_jobs_main_query($query) {
 
             // Add meta query for 'expiry_date'
             $meta_query[] = array(
-                'key'     => WP_JOB_BOARD_PRO_JOB_LISTING_PREFIX . 'application_deadline_date',
+                'key'     => WP_JOB_BOARD_PRO_JOB_LISTING_PREFIX . 'expiry_date',
                 'value'   => date('Y-m-d'),
                 'compare' => '>=',
                 'type'    => 'DATE'
