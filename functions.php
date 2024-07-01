@@ -408,7 +408,22 @@ function custom_translations($translated_text, $text, $domain) {
 			'english' => 'Open Job',
 			'dutch' => 'Open Opdrachten',
 			'domain' => ['wp-job-board-pro', 'superio']
-		)
+		),
+		'Open Position' => array(
+			'english' => 'Open Position',
+			'dutch' => 'Openstaande Opdrachten',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
+		'About' => array(
+			'english' => 'About',
+			'dutch' => 'Over',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
+		'Browse Full List' => array(
+			'english' => 'Browse Full List',
+			'dutch' => 'Bekijk alle opdrachten',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
 	);
 
     if (isset($translations[$text]) && in_array($domain, $translations[$text]['domain'] ) ) {
@@ -575,7 +590,7 @@ function superio_child_job_display_short_location($post, $display_type = 'no-ico
 	$map_location_properties = get_post_meta( $post->ID, '_job_map_location_properties', true );
 	$parent_location = '';
 
-	if(isset($map_location_properties) || !empty($map_location_properties)){
+	if(!empty($map_location_properties)){
 		$parent_location = $map_location_properties['road'];
 	}
 
