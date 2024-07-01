@@ -424,6 +424,11 @@ function custom_translations($translated_text, $text, $domain) {
 			'dutch' => 'Bekijk alle opdrachten',
 			'domain' => ['wp-job-board-pro', 'superio']
 		),
+		'Show Sidebar' => array(
+			'english' => 'Show Sidebar',
+			'dutch' => 'Toon filters',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
 	);
 
     if (isset($translations[$text]) && in_array($domain, $translations[$text]['domain'] ) ) {
