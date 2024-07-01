@@ -429,12 +429,27 @@ function custom_translations($translated_text, $text, $domain) {
 			'dutch' => 'Toon filters',
 			'domain' => ['wp-job-board-pro', 'superio']
 		),
+		' per hour' => array(
+			'english' => ' per hour',
+			'dutch' => ' per uur',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
+		' per month' => array(
+			'english' => ' per month',
+			'dutch' => ' per Maand',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
+		' per day' => array(
+			'english' => ' per day',
+			'dutch' => ' per dag',
+			'domain' => ['wp-job-board-pro', 'superio']
+		),
 	);
 
     if (isset($translations[$text]) && in_array($domain, $translations[$text]['domain'] ) ) {
         $translated_text = $translations[$text]['dutch'];
     }
-
+	
     return $translated_text;
 }
 
