@@ -77,3 +77,7 @@
 .content-below-banner {
     margin-top: 20px; /* Adjust the spacing as needed */
 }
+
+#side-bar-mobile-job-view .list li {
+    width: 100% !important;
+}
